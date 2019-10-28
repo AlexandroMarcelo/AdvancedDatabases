@@ -1,0 +1,294 @@
+Last login: Mon Apr 29 16:00:51 on ttys000
+MacBook-Pro-de-Alexandro:~ alexmarcelo$ ls
+AndroidStudioProjects	Google Drive		VirtualBox VMs
+Applications		Library			cv2.so
+Creative Cloud Files	Movies			dumps
+Desktop			Music			neo4j
+Dev			Pictures		pencv3.pth
+Documents		PlaneaciónProyecto.pdf	redis
+Downloads		Public
+Example.pod		Samsung
+MacBook-Pro-de-Alexandro:~ alexmarcelo$ cd D
+Desktop/   Dev/       Documents/ Downloads/ 
+MacBook-Pro-de-Alexandro:~ alexmarcelo$ cd Desktop/
+MacBook-Pro-de-Alexandro:Desktop alexmarcelo$ cd BD/
+MacBook-Pro-de-Alexandro:BD alexmarcelo$ ls
+Cassandra		Tarea4			scriptData.cpp
+LiveJournal GraphDB	influxdb		sharding.js
+Practica3		redis			tarea3
+SQLite			scripGenerator
+MacBook-Pro-de-Alexandro:BD alexmarcelo$ mkdir Practica4
+MacBook-Pro-de-Alexandro:BD alexmarcelo$ cd Practica4
+MacBook-Pro-de-Alexandro:Practica4 alexmarcelo$ ls
+MacBook-Pro-de-Alexandro:Practica4 alexmarcelo$ git init
+Initialized empty Git repository in /Users/alexmarcelo/Desktop/BD/Practica4/.git/
+MacBook-Pro-de-Alexandro:Practica4 alexmarcelo$ git clone https://github.com/tec-csf/TC3041-P4-Primavera-2019-equipo-11.git
+Cloning into 'TC3041-P4-Primavera-2019-equipo-11'...
+remote: Enumerating objects: 11, done.
+remote: Counting objects: 100% (11/11), done.
+remote: Compressing objects: 100% (10/10), done.
+remote: Total 11 (delta 1), reused 7 (delta 0), pack-reused 0
+Unpacking objects: 100% (11/11), done.
+MacBook-Pro-de-Alexandro:Practica4 alexmarcelo$ ls
+TC3041-P4-Primavera-2019-equipo-11
+MacBook-Pro-de-Alexandro:Practica4 alexmarcelo$ cd TC3041-P4-Primavera-2019-equipo-11/
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ ls
+DatosdelInvernadero.cpp			Práctica 4. Time-series databases.pdf
+LICENSE					README.md
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ 
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ 
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ docker run --name influxdb -d -v $PWD:/var/lib/influxdb influxdb
+docker: Cannot connect to the Docker daemon at unix:///var/run/docker.sock. Is the docker daemon running?.
+See 'docker run --help'.
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ docker run --name influxdb -d -v $PWD:/var/lib/influxdb influxdb
+7c7905f2d1ddcf449216d70812a3d6b97948eec6add30896d234eef06481ff62
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ docker cp DatosInvernadero.txt influxdb:/
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ docker exec -it influxdb bash
+root@7c7905f2d1dd:/# influx -import -path=DatosInvernadero.txt -precision=s
+2019/04/29 22:42:03 Processed 100000 lines.  Time elapsed: 984.925085ms.  Points per second (PPS): 101530
+2019/04/29 22:42:04 Processed 200000 lines.  Time elapsed: 1.859843116s.  Points per second (PPS): 107535
+2019/04/29 22:42:05 Processed 300000 lines.  Time elapsed: 2.730989485s.  Points per second (PPS): 109850
+2019/04/29 22:42:06 Processed 400000 lines.  Time elapsed: 3.531256604s.  Points per second (PPS): 113274
+2019/04/29 22:42:07 Processed 500000 lines.  Time elapsed: 4.296258807s.  Points per second (PPS): 116380
+2019/04/29 22:42:07 Processed 600000 lines.  Time elapsed: 4.985279007s.  Points per second (PPS): 120354
+2019/04/29 22:42:08 Processed 700000 lines.  Time elapsed: 5.604154229s.  Points per second (PPS): 124907
+2019/04/29 22:42:09 Processed 800000 lines.  Time elapsed: 6.377853882s.  Points per second (PPS): 125434
+2019/04/29 22:42:10 Processed 900000 lines.  Time elapsed: 7.334910468s.  Points per second (PPS): 122700
+2019/04/29 22:42:11 Processed 1000000 lines.  Time elapsed: 8.214730309s.  Points per second (PPS): 121732
+2019/04/29 22:42:11 Processed 1100000 lines.  Time elapsed: 8.667511395s.  Points per second (PPS): 126910
+2019/04/29 22:42:12 Processed 1200000 lines.  Time elapsed: 9.21986536s.  Points per second (PPS): 130153
+2019/04/29 22:42:12 Processed 1300000 lines.  Time elapsed: 9.688991987s.  Points per second (PPS): 134172
+2019/04/29 22:42:13 Processed 1400000 lines.  Time elapsed: 10.254822086s.  Points per second (PPS): 136521
+2019/04/29 22:42:13 Processed 1500000 lines.  Time elapsed: 10.77212369s.  Points per second (PPS): 139248
+2019/04/29 22:42:14 Processed 1600000 lines.  Time elapsed: 11.348230297s.  Points per second (PPS): 140991
+2019/04/29 22:42:14 Processed 1700000 lines.  Time elapsed: 11.831995466s.  Points per second (PPS): 143678
+2019/04/29 22:42:15 Processed 1800000 lines.  Time elapsed: 12.306384808s.  Points per second (PPS): 146265
+2019/04/29 22:42:15 Processed 1900000 lines.  Time elapsed: 12.768396735s.  Points per second (PPS): 148804
+2019/04/29 22:42:16 Processed 2000000 lines.  Time elapsed: 13.272785064s.  Points per second (PPS): 150684
+2019/04/29 22:42:16 Processed 2100000 lines.  Time elapsed: 13.80979283s.  Points per second (PPS): 152066
+2019/04/29 22:42:17 Processed 2200000 lines.  Time elapsed: 14.280213998s.  Points per second (PPS): 154059
+2019/04/29 22:42:17 Processed 2300000 lines.  Time elapsed: 14.724165227s.  Points per second (PPS): 156205
+2019/04/29 22:42:18 Processed 2400000 lines.  Time elapsed: 15.16097377s.  Points per second (PPS): 158301
+2019/04/29 22:42:18 Processed 2500000 lines.  Time elapsed: 15.607397577s.  Points per second (PPS): 160180
+2019/04/29 22:42:18 Processed 2600000 lines.  Time elapsed: 15.92886074s.  Points per second (PPS): 163225
+2019/04/29 22:42:19 Processed 2700000 lines.  Time elapsed: 16.377637354s.  Points per second (PPS): 164858
+2019/04/29 22:42:19 Processed 2800000 lines.  Time elapsed: 16.822862334s.  Points per second (PPS): 166440
+2019/04/29 22:42:20 Processed 2900000 lines.  Time elapsed: 17.158795443s.  Points per second (PPS): 169009
+2019/04/29 22:42:20 Processed 3000000 lines.  Time elapsed: 17.688717042s.  Points per second (PPS): 169599
+2019/04/29 22:42:21 Processed 3100000 lines.  Time elapsed: 18.19514242s.  Points per second (PPS): 170375
+2019/04/29 22:42:21 Processed 3200000 lines.  Time elapsed: 18.564994901s.  Points per second (PPS): 172367
+2019/04/29 22:42:22 Processed 3300000 lines.  Time elapsed: 19.187830003s.  Points per second (PPS): 171984
+2019/04/29 22:42:22 Processed 3400000 lines.  Time elapsed: 19.615686303s.  Points per second (PPS): 173330
+2019/04/29 22:42:22 Processed 3500000 lines.  Time elapsed: 19.9217986s.  Points per second (PPS): 175686
+2019/04/29 22:42:23 Processed 3600000 lines.  Time elapsed: 20.367437329s.  Points per second (PPS): 176752
+2019/04/29 22:42:23 Processed 3700000 lines.  Time elapsed: 20.706125066s.  Points per second (PPS): 178691
+2019/04/29 22:42:24 Processed 3800000 lines.  Time elapsed: 21.246275469s.  Points per second (PPS): 178854
+2019/04/29 22:42:24 Processed 3900000 lines.  Time elapsed: 21.628909404s.  Points per second (PPS): 180314
+2019/04/29 22:42:25 Processed 4000000 lines.  Time elapsed: 22.131500661s.  Points per second (PPS): 180737
+2019/04/29 22:42:25 Processed 4100000 lines.  Time elapsed: 22.535680845s.  Points per second (PPS): 181933
+2019/04/29 22:42:25 Processed 4200000 lines.  Time elapsed: 23.102777884s.  Points per second (PPS): 181796
+2019/04/29 22:42:26 Processed 4300000 lines.  Time elapsed: 23.876524614s.  Points per second (PPS): 180093
+2019/04/29 22:42:27 Processed 4400000 lines.  Time elapsed: 24.527994528s.  Points per second (PPS): 179386
+2019/04/29 22:42:27 Processed 4500000 lines.  Time elapsed: 24.881695302s.  Points per second (PPS): 180855
+2019/04/29 22:42:28 Processed 4600000 lines.  Time elapsed: 25.434398468s.  Points per second (PPS): 180857
+2019/04/29 22:42:28 Processed 4700000 lines.  Time elapsed: 25.807372803s.  Points per second (PPS): 182118
+2019/04/29 22:42:29 Processed 4800000 lines.  Time elapsed: 26.231436285s.  Points per second (PPS): 182986
+2019/04/29 22:42:29 Processed 4900000 lines.  Time elapsed: 26.718061332s.  Points per second (PPS): 183396
+2019/04/29 22:42:29 Processed 5000000 lines.  Time elapsed: 27.087445416s.  Points per second (PPS): 184587
+2019/04/29 22:42:30 Processed 5100000 lines.  Time elapsed: 27.667052248s.  Points per second (PPS): 184334
+2019/04/29 22:42:30 Processed 5200000 lines.  Time elapsed: 27.996016484s.  Points per second (PPS): 185740
+2019/04/29 22:42:31 Processed 5300000 lines.  Time elapsed: 28.315507426s.  Points per second (PPS): 187176
+2019/04/29 22:42:31 Processed 5400000 lines.  Time elapsed: 28.881969457s.  Points per second (PPS): 186967
+2019/04/29 22:42:32 Processed 5500000 lines.  Time elapsed: 29.230681902s.  Points per second (PPS): 188158
+2019/04/29 22:42:32 Processed 5600000 lines.  Time elapsed: 29.821777555s.  Points per second (PPS): 187782
+2019/04/29 22:42:33 Processed 5700000 lines.  Time elapsed: 30.193764011s.  Points per second (PPS): 188780
+2019/04/29 22:42:33 Processed 5800000 lines.  Time elapsed: 30.526677265s.  Points per second (PPS): 189997
+2019/04/29 22:42:33 Processed 5900000 lines.  Time elapsed: 31.089954562s.  Points per second (PPS): 189771
+2019/04/29 22:42:34 Processed 6000000 lines.  Time elapsed: 31.447168469s.  Points per second (PPS): 190796
+2019/04/29 22:42:34 Processed 6100000 lines.  Time elapsed: 31.813626714s.  Points per second (PPS): 191741
+2019/04/29 22:42:35 Processed 6200000 lines.  Time elapsed: 32.447725612s.  Points per second (PPS): 191076
+2019/04/29 22:42:35 Processed 6300000 lines.  Time elapsed: 32.846700576s.  Points per second (PPS): 191800
+2019/04/29 22:42:36 Processed 6400000 lines.  Time elapsed: 33.270349148s.  Points per second (PPS): 192363
+2019/04/29 22:42:36 Processed 6500000 lines.  Time elapsed: 33.99734039s.  Points per second (PPS): 191191
+2019/04/29 22:42:37 Processed 6600000 lines.  Time elapsed: 34.391999971s.  Points per second (PPS): 191905
+2019/04/29 22:42:37 Processed 6700000 lines.  Time elapsed: 34.720049114s.  Points per second (PPS): 192972
+2019/04/29 22:42:37 Processed 6800000 lines.  Time elapsed: 35.09993672s.  Points per second (PPS): 193732
+2019/04/29 22:42:38 Processed 6900000 lines.  Time elapsed: 35.594762116s.  Points per second (PPS): 193848
+2019/04/29 22:42:38 Processed 7000000 lines.  Time elapsed: 35.880471302s.  Points per second (PPS): 195092
+2019/04/29 22:42:39 Processed 7100000 lines.  Time elapsed: 36.379714252s.  Points per second (PPS): 195163
+2019/04/29 22:42:39 Processed 7200000 lines.  Time elapsed: 36.999082166s.  Points per second (PPS): 194599
+2019/04/29 22:42:40 Processed 7300000 lines.  Time elapsed: 37.397615083s.  Points per second (PPS): 195199
+2019/04/29 22:42:40 Processed 7400000 lines.  Time elapsed: 37.804064253s.  Points per second (PPS): 195746
+2019/04/29 22:42:41 Processed 7500000 lines.  Time elapsed: 38.485236649s.  Points per second (PPS): 194879
+2019/04/29 22:42:41 Processed 7600000 lines.  Time elapsed: 38.882226473s.  Points per second (PPS): 195462
+2019/04/29 22:42:42 Processed 7700000 lines.  Time elapsed: 39.331546285s.  Points per second (PPS): 195771
+2019/04/29 22:42:42 Processed 7800000 lines.  Time elapsed: 39.700602186s.  Points per second (PPS): 196470
+2019/04/29 22:42:43 Processed 7900000 lines.  Time elapsed: 40.326012733s.  Points per second (PPS): 195903
+2019/04/29 22:42:43 Processed 8000000 lines.  Time elapsed: 40.725635985s.  Points per second (PPS): 196436
+2019/04/29 22:42:43 Processed 8100000 lines.  Time elapsed: 41.102126009s.  Points per second (PPS): 197070
+2019/04/29 22:42:44 Processed 8200000 lines.  Time elapsed: 41.630643961s.  Points per second (PPS): 196970
+2019/04/29 22:42:45 Processed 8300000 lines.  Time elapsed: 42.132546464s.  Points per second (PPS): 196997
+2019/04/29 22:42:45 Processed 8400000 lines.  Time elapsed: 42.559509204s.  Points per second (PPS): 197370
+2019/04/29 22:42:45 Processed 8500000 lines.  Time elapsed: 42.937673811s.  Points per second (PPS): 197961
+2019/04/29 22:42:46 Processed 8600000 lines.  Time elapsed: 43.399731607s.  Points per second (PPS): 198157
+2019/04/29 22:42:46 Processed 8700000 lines.  Time elapsed: 43.955186875s.  Points per second (PPS): 197928
+2019/04/29 22:42:47 Processed 8800000 lines.  Time elapsed: 44.346060382s.  Points per second (PPS): 198439
+2019/04/29 22:42:47 Processed 8900000 lines.  Time elapsed: 44.682538597s.  Points per second (PPS): 199182
+2019/04/29 22:42:47 Processed 9000000 lines.  Time elapsed: 44.993581258s.  Points per second (PPS): 200028
+2019/04/29 22:42:48 Processed 9100000 lines.  Time elapsed: 45.619974995s.  Points per second (PPS): 199474
+2019/04/29 22:42:48 Processed 9200000 lines.  Time elapsed: 45.92876269s.  Points per second (PPS): 200310
+2019/04/29 22:42:49 Processed 9300000 lines.  Time elapsed: 46.279466858s.  Points per second (PPS): 200953
+2019/04/29 22:42:49 Processed 9400000 lines.  Time elapsed: 46.587506504s.  Points per second (PPS): 201770
+2019/04/29 22:42:50 Processed 9500000 lines.  Time elapsed: 47.29264903s.  Points per second (PPS): 200876
+2019/04/29 22:42:50 Processed 9600000 lines.  Time elapsed: 47.621408419s.  Points per second (PPS): 201590
+2019/04/29 22:42:50 Processed 9700000 lines.  Time elapsed: 47.999024152s.  Points per second (PPS): 202087
+2019/04/29 22:42:51 Processed 9800000 lines.  Time elapsed: 48.336168509s.  Points per second (PPS): 202746
+2019/04/29 22:42:51 Processed 9900000 lines.  Time elapsed: 48.780800142s.  Points per second (PPS): 202948
+2019/04/29 22:42:52 Processed 10000000 lines.  Time elapsed: 49.527539647s.  Points per second (PPS): 201907
+2019/04/29 22:42:52 Processed 10100000 lines.  Time elapsed: 49.873370846s.  Points per second (PPS): 202512
+2019/04/29 22:42:53 Processed 10200000 lines.  Time elapsed: 50.276733305s.  Points per second (PPS): 202877
+2019/04/29 22:42:53 Processed 10300000 lines.  Time elapsed: 50.609845636s.  Points per second (PPS): 203517
+2019/04/29 22:42:53 Processed 10400000 lines.  Time elapsed: 51.022860569s.  Points per second (PPS): 203830
+2019/04/29 22:42:54 Processed 10500000 lines.  Time elapsed: 51.68389737s.  Points per second (PPS): 203158
+2019/04/29 22:42:54 Processed 10600000 lines.  Time elapsed: 52.00360379s.  Points per second (PPS): 203832
+2019/04/29 22:42:55 Processed 10700000 lines.  Time elapsed: 52.399096744s.  Points per second (PPS): 204201
+2019/04/29 22:42:55 Processed 10800000 lines.  Time elapsed: 52.80208283s.  Points per second (PPS): 204537
+2019/04/29 22:42:56 Processed 10900000 lines.  Time elapsed: 53.232573676s.  Points per second (PPS): 204761
+2019/04/29 22:42:56 Processed 11000000 lines.  Time elapsed: 54.083648376s.  Points per second (PPS): 203388
+2019/04/29 22:42:57 Processed 11100000 lines.  Time elapsed: 54.40799293s.  Points per second (PPS): 204014
+2019/04/29 22:42:57 Processed 11200000 lines.  Time elapsed: 54.680888315s.  Points per second (PPS): 204824
+2019/04/29 22:42:57 Processed 11300000 lines.  Time elapsed: 54.996456982s.  Points per second (PPS): 205467
+2019/04/29 22:42:58 Processed 11400000 lines.  Time elapsed: 55.307665073s.  Points per second (PPS): 206119
+2019/04/29 22:42:58 Processed 11500000 lines.  Time elapsed: 56.010176221s.  Points per second (PPS): 205319
+2019/04/29 22:42:59 Processed 11600000 lines.  Time elapsed: 56.335047392s.  Points per second (PPS): 205910
+2019/04/29 22:42:59 Processed 11700000 lines.  Time elapsed: 56.713171535s.  Points per second (PPS): 206301
+2019/04/29 22:42:59 Processed 11800000 lines.  Time elapsed: 57.033428315s.  Points per second (PPS): 206896
+2019/04/29 22:43:00 Processed 11900000 lines.  Time elapsed: 57.413185455s.  Points per second (PPS): 207269
+2019/04/29 22:43:00 Processed 12000000 lines.  Time elapsed: 57.804946315s.  Points per second (PPS): 207594
+2019/04/29 22:43:01 Processed 12100000 lines.  Time elapsed: 58.543787062s.  Points per second (PPS): 206682
+2019/04/29 22:43:01 Processed 12200000 lines.  Time elapsed: 58.875558267s.  Points per second (PPS): 207216
+2019/04/29 22:43:02 Processed 12300000 lines.  Time elapsed: 59.176976346s.  Points per second (PPS): 207851
+2019/04/29 22:43:02 Processed 12400000 lines.  Time elapsed: 59.435840866s.  Points per second (PPS): 208628
+2019/04/29 22:43:02 Processed 12500000 lines.  Time elapsed: 59.694376932s.  Points per second (PPS): 209399
+2019/04/29 22:43:02 Processed 12600000 lines.  Time elapsed: 1m0.057084743s.  Points per second (PPS): 209800
+2019/04/29 22:43:03 Processed 12700000 lines.  Time elapsed: 1m0.701236432s.  Points per second (PPS): 209221
+2019/04/29 22:43:03 Processed 12800000 lines.  Time elapsed: 1m1.04664448s.  Points per second (PPS): 209675
+2019/04/29 22:43:04 Processed 12900000 lines.  Time elapsed: 1m1.375226764s.  Points per second (PPS): 210182
+2019/04/29 22:43:04 Processed 13000000 lines.  Time elapsed: 1m1.654423497s.  Points per second (PPS): 210852
+2019/04/29 22:43:04 Processed 13100000 lines.  Time elapsed: 1m1.968234322s.  Points per second (PPS): 211398
+2019/04/29 22:43:05 Processed 13200000 lines.  Time elapsed: 1m2.370768238s.  Points per second (PPS): 211637
+2019/04/29 22:43:05 Processed 13300000 lines.  Time elapsed: 1m3.061452337s.  Points per second (PPS): 210905
+2019/04/29 22:43:06 Processed 13400000 lines.  Time elapsed: 1m3.429863693s.  Points per second (PPS): 211256
+2019/04/29 22:43:06 Processed 13500000 lines.  Time elapsed: 1m3.880601362s.  Points per second (PPS): 211331
+2019/04/29 22:43:07 Processed 13600000 lines.  Time elapsed: 1m4.227828896s.  Points per second (PPS): 211746
+2019/04/29 22:43:07 Processed 13700000 lines.  Time elapsed: 1m4.54533946s.  Points per second (PPS): 212253
+2019/04/29 22:43:07 Processed 13800000 lines.  Time elapsed: 1m4.848948218s.  Points per second (PPS): 212802
+2019/04/29 22:43:08 Processed 13900000 lines.  Time elapsed: 1m5.579934074s.  Points per second (PPS): 211955
+2019/04/29 22:43:08 Processed 14000000 lines.  Time elapsed: 1m5.914999707s.  Points per second (PPS): 212394
+2019/04/29 22:43:09 Processed 14100000 lines.  Time elapsed: 1m6.38724815s.  Points per second (PPS): 212390
+2019/04/29 22:43:09 Processed 14200000 lines.  Time elapsed: 1m6.808164877s.  Points per second (PPS): 212548
+2019/04/29 22:43:10 Processed 14300000 lines.  Time elapsed: 1m7.300199962s.  Points per second (PPS): 212480
+2019/04/29 22:43:10 Processed 14400000 lines.  Time elapsed: 1m7.718550728s.  Points per second (PPS): 212644
+2019/04/29 22:43:11 Processed 14500000 lines.  Time elapsed: 1m8.342204298s.  Points per second (PPS): 212167
+2019/04/29 22:43:11 Processed 14600000 lines.  Time elapsed: 1m8.861522559s.  Points per second (PPS): 212019
+2019/04/29 22:43:12 Processed 14700000 lines.  Time elapsed: 1m9.320727138s.  Points per second (PPS): 212057
+2019/04/29 22:43:12 Processed 14800000 lines.  Time elapsed: 1m9.718887471s.  Points per second (PPS): 212281
+2019/04/29 22:43:12 Processed 14900000 lines.  Time elapsed: 1m10.123224019s.  Points per second (PPS): 212483
+2019/04/29 22:43:13 Processed 15000000 lines.  Time elapsed: 1m10.485234257s.  Points per second (PPS): 212810
+2019/04/29 22:43:13 Processed 15100000 lines.  Time elapsed: 1m10.832444591s.  Points per second (PPS): 213179
+2019/04/29 22:43:14 Processed 15200000 lines.  Time elapsed: 1m11.475721335s.  Points per second (PPS): 212659
+2019/04/29 22:43:14 Processed 15300000 lines.  Time elapsed: 1m11.817161488s.  Points per second (PPS): 213041
+2019/04/29 22:43:15 Processed 15400000 lines.  Time elapsed: 1m12.179593394s.  Points per second (PPS): 213356
+2019/04/29 22:43:15 Processed 15500000 lines.  Time elapsed: 1m12.563127656s.  Points per second (PPS): 213607
+2019/04/29 22:43:15 Processed 15600000 lines.  Time elapsed: 1m12.944378782s.  Points per second (PPS): 213861
+2019/04/29 22:43:16 Processed 15700000 lines.  Time elapsed: 1m13.26772908s.  Points per second (PPS): 214282
+2019/04/29 22:43:16 Processed 15800000 lines.  Time elapsed: 1m13.602582382s.  Points per second (PPS): 214666
+2019/04/29 22:43:17 Processed 15900000 lines.  Time elapsed: 1m14.275983412s.  Points per second (PPS): 214066
+2019/04/29 22:43:17 Processed 16000000 lines.  Time elapsed: 1m14.57957682s.  Points per second (PPS): 214535
+2019/04/29 22:43:17 Processed 16100000 lines.  Time elapsed: 1m14.930113699s.  Points per second (PPS): 214866
+2019/04/29 22:43:18 Processed 16200000 lines.  Time elapsed: 1m15.236608569s.  Points per second (PPS): 215320
+2019/04/29 22:43:18 Processed 16300000 lines.  Time elapsed: 1m15.710045566s.  Points per second (PPS): 215295
+2019/04/29 22:43:18 Processed 16400000 lines.  Time elapsed: 1m16.041132782s.  Points per second (PPS): 215672
+2019/04/29 22:43:19 Processed 16500000 lines.  Time elapsed: 1m16.35904095s.  Points per second (PPS): 216084
+2019/04/29 22:43:19 Processed 16600000 lines.  Time elapsed: 1m16.777485834s.  Points per second (PPS): 216209
+2019/04/29 22:43:20 Processed 16700000 lines.  Time elapsed: 1m17.431981454s.  Points per second (PPS): 215673
+2019/04/29 22:43:20 Processed 16800000 lines.  Time elapsed: 1m17.797837413s.  Points per second (PPS): 215944
+2019/04/29 22:43:21 Processed 16900000 lines.  Time elapsed: 1m18.167717331s.  Points per second (PPS): 216201
+2019/04/29 22:43:21 Processed 17000000 lines.  Time elapsed: 1m18.523824949s.  Points per second (PPS): 216494
+2019/04/29 22:43:21 Processed 17100000 lines.  Time elapsed: 1m18.865273314s.  Points per second (PPS): 216825
+2019/04/29 22:43:22 Processed 17200000 lines.  Time elapsed: 1m19.208972293s.  Points per second (PPS): 217147
+2019/04/29 22:43:22 Processed 17300000 lines.  Time elapsed: 1m19.530325114s.  Points per second (PPS): 217527
+2019/04/29 22:43:23 Processed 17400000 lines.  Time elapsed: 1m20.154001947s.  Points per second (PPS): 217082
+2019/04/29 22:43:23 Processed 17500000 lines.  Time elapsed: 1m20.605135562s.  Points per second (PPS): 217107
+2019/04/29 22:43:23 Processed 17600000 lines.  Time elapsed: 1m20.940591817s.  Points per second (PPS): 217443
+2019/04/29 22:43:24 Processed 17700000 lines.  Time elapsed: 1m21.269290196s.  Points per second (PPS): 217794
+2019/04/29 22:43:24 Processed 17800000 lines.  Time elapsed: 1m21.583575047s.  Points per second (PPS): 218181
+2019/04/29 22:43:24 Processed 17900000 lines.  Time elapsed: 1m21.853965449s.  Points per second (PPS): 218682
+2019/04/29 22:43:24 Processed 18000000 lines.  Time elapsed: 1m22.113194025s.  Points per second (PPS): 219209
+2019/04/29 22:43:25 Processed 18100000 lines.  Time elapsed: 1m22.455254686s.  Points per second (PPS): 219512
+2019/04/29 22:43:25 Processed 18200000 lines.  Time elapsed: 1m23.002271612s.  Points per second (PPS): 219271
+2019/04/29 22:43:26 Processed 18300000 lines.  Time elapsed: 1m23.546826811s.  Points per second (PPS): 219038
+2019/04/29 22:43:26 Processed 18400000 lines.  Time elapsed: 1m23.911812053s.  Points per second (PPS): 219277
+2019/04/29 22:43:27 Processed 18500000 lines.  Time elapsed: 1m24.277341307s.  Points per second (PPS): 219513
+2019/04/29 22:43:27 Processed 18600000 lines.  Time elapsed: 1m24.617615034s.  Points per second (PPS): 219812
+2019/04/29 22:43:27 Processed 18700000 lines.  Time elapsed: 1m24.950652716s.  Points per second (PPS): 220127
+2019/04/29 22:43:28 Processed 18800000 lines.  Time elapsed: 1m25.263194588s.  Points per second (PPS): 220493
+2019/04/29 22:43:28 Processed 18900000 lines.  Time elapsed: 1m25.524074251s.  Points per second (PPS): 220990
+2019/04/29 22:43:28 Processed 19000000 lines.  Time elapsed: 1m25.830307418s.  Points per second (PPS): 221367
+2019/04/29 22:43:29 Processed 19100000 lines.  Time elapsed: 1m26.552053201s.  Points per second (PPS): 220676
+2019/04/29 22:43:29 Processed 19200000 lines.  Time elapsed: 1m26.878712249s.  Points per second (PPS): 220997
+2019/04/29 22:43:30 Processed 19300000 lines.  Time elapsed: 1m27.200810717s.  Points per second (PPS): 221328
+2019/04/29 22:43:30 Processed 19400000 lines.  Time elapsed: 1m27.571720091s.  Points per second (PPS): 221532
+2019/04/29 22:43:30 Processed 19500000 lines.  Time elapsed: 1m27.960905909s.  Points per second (PPS): 221689
+2019/04/29 22:43:31 Processed 19600000 lines.  Time elapsed: 1m28.32211594s.  Points per second (PPS): 221914
+2019/04/29 22:43:31 Processed 19700000 lines.  Time elapsed: 1m28.65490634s.  Points per second (PPS): 222209
+2019/04/29 22:43:31 Processed 19800000 lines.  Time elapsed: 1m29.018554326s.  Points per second (PPS): 222425
+2019/04/29 22:43:32 Processed 19900000 lines.  Time elapsed: 1m29.413853562s.  Points per second (PPS): 222560
+2019/04/29 22:43:33 Processed 20000000 lines.  Time elapsed: 1m30.225979159s.  Points per second (PPS): 221665
+2019/04/29 22:43:33 Processed 20100000 lines.  Time elapsed: 1m30.643652792s.  Points per second (PPS): 221747
+2019/04/29 22:43:33 Processed 20200000 lines.  Time elapsed: 1m30.95502905s.  Points per second (PPS): 222087
+2019/04/29 22:43:34 Processed 20300000 lines.  Time elapsed: 1m31.228249568s.  Points per second (PPS): 222518
+2019/04/29 22:43:34 Processed 20400000 lines.  Time elapsed: 1m31.529506323s.  Points per second (PPS): 222878
+2019/04/29 22:43:34 Processed 20500000 lines.  Time elapsed: 1m31.826182683s.  Points per second (PPS): 223247
+2019/04/29 22:43:34 Processed 20600000 lines.  Time elapsed: 1m32.079167509s.  Points per second (PPS): 223720
+2019/04/29 22:43:35 Processed 20700000 lines.  Time elapsed: 1m32.41580662s.  Points per second (PPS): 223987
+2019/04/29 22:43:35 Processed 20800000 lines.  Time elapsed: 1m32.705001119s.  Points per second (PPS): 224367
+2019/04/29 22:43:36 Processed 20900000 lines.  Time elapsed: 1m33.53506685s.  Points per second (PPS): 223445
+2019/04/29 22:43:36 Processed 21000000 lines.  Time elapsed: 1m33.893797806s.  Points per second (PPS): 223656
+2019/04/29 22:43:36 Processed 1 commands
+2019/04/29 22:43:36 Processed 21000000 inserts
+2019/04/29 22:43:36 Failed 0 inserts
+root@7c7905f2d1dd:/# influx
+Connected to http://localhost:8086 version 1.7.5
+InfluxDB shell version: 1.7.5
+Enter an InfluxQL query
+> USE Invernadero
+ERR: Database Invernadero doesn't exist. Run SHOW DATABASES for a list of existing databases.
+DB does not exist!
+> USE Invernaderos
+Using database Invernaderos
+> SHOW SERIES
+key
+---
+Humedad,Numero_Invernadero=1
+Humedad,Numero_Invernadero=2
+Humedad,Numero_Invernadero=3
+Humedad,Numero_Invernadero=4
+Humedad,Numero_Invernadero=5
+Humedad,Numero_Invernadero=6
+Humedad,Numero_Invernadero=7
+Luminosidad,Numero_Invernadero=1
+Luminosidad,Numero_Invernadero=2
+Luminosidad,Numero_Invernadero=3
+Luminosidad,Numero_Invernadero=4
+Luminosidad,Numero_Invernadero=5
+Luminosidad,Numero_Invernadero=6
+Luminosidad,Numero_Invernadero=7
+Temperatura,Numero_Invernadero=1
+Temperatura,Numero_Invernadero=2
+Temperatura,Numero_Invernadero=3
+Temperatura,Numero_Invernadero=4
+Temperatura,Numero_Invernadero=5
+Temperatura,Numero_Invernadero=6
+Temperatura,Numero_Invernadero=7
+> MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ 

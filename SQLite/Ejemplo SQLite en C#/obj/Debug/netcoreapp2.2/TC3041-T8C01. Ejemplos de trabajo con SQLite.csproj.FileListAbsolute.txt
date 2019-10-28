@@ -1,0 +1,11 @@
+/Users/alexmarcelo/Desktop/BD/SQLite/Ejemplo SQLite en C#/bin/Debug/netcoreapp2.2/TC3041-T8C01. Ejemplos de trabajo con SQLite.deps.json
+/Users/alexmarcelo/Desktop/BD/SQLite/Ejemplo SQLite en C#/bin/Debug/netcoreapp2.2/TC3041-T8C01. Ejemplos de trabajo con SQLite.runtimeconfig.json
+/Users/alexmarcelo/Desktop/BD/SQLite/Ejemplo SQLite en C#/bin/Debug/netcoreapp2.2/TC3041-T8C01. Ejemplos de trabajo con SQLite.runtimeconfig.dev.json
+/Users/alexmarcelo/Desktop/BD/SQLite/Ejemplo SQLite en C#/bin/Debug/netcoreapp2.2/TC3041-T8C01. Ejemplos de trabajo con SQLite.dll
+/Users/alexmarcelo/Desktop/BD/SQLite/Ejemplo SQLite en C#/bin/Debug/netcoreapp2.2/TC3041-T8C01. Ejemplos de trabajo con SQLite.pdb
+/Users/alexmarcelo/Desktop/BD/SQLite/Ejemplo SQLite en C#/obj/Debug/netcoreapp2.2/TC3041-T8C01. Ejemplos de trabajo con SQLite.csprojAssemblyReference.cache
+/Users/alexmarcelo/Desktop/BD/SQLite/Ejemplo SQLite en C#/obj/Debug/netcoreapp2.2/TC3041-T8C01. Ejemplos de trabajo con SQLite.csproj.CoreCompileInputs.cache
+/Users/alexmarcelo/Desktop/BD/SQLite/Ejemplo SQLite en C#/obj/Debug/netcoreapp2.2/TC3041-T8C01. Ejemplos de trabajo con SQLite.AssemblyInfoInputs.cache
+/Users/alexmarcelo/Desktop/BD/SQLite/Ejemplo SQLite en C#/obj/Debug/netcoreapp2.2/TC3041-T8C01. Ejemplos de trabajo con SQLite.AssemblyInfo.cs
+/Users/alexmarcelo/Desktop/BD/SQLite/Ejemplo SQLite en C#/obj/Debug/netcoreapp2.2/TC3041-T8C01. Ejemplos de trabajo con SQLite.dll
+/Users/alexmarcelo/Desktop/BD/SQLite/Ejemplo SQLite en C#/obj/Debug/netcoreapp2.2/TC3041-T8C01. Ejemplos de trabajo con SQLite.pdb

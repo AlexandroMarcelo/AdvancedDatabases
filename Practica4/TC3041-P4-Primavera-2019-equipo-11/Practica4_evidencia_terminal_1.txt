@@ -1,0 +1,51 @@
+Last login: Mon Apr 29 17:22:39 on ttys000
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ ls
+DatosInvernadero.txt			comandos.txt
+DatosdelInvernadero.cpp			data
+LICENSE					meta
+Práctica 4. Time-series databases.pdf	run.out
+README.md				wal
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ docker run --name grafana -d -p 3000:3000 grafana/grafana
+83b98e1af7f0845f84ca62523ad7f5cd71dc6a95afab0f5a1f5d411445b872c1
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ docker run --name influxdb -d -p 8086:8086 -v $PWD:/var/lib/influxdb influxdb
+docker: Error response from daemon: Conflict. The container name "/influxdb" is already in use by container "7c7905f2d1ddcf449216d70812a3d6b97948eec6add30896d234eef06481ff62". You have to remove (or rename) that container to be able to reuse that name.
+See 'docker run --help'.
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                  PORTS                    NAMES
+83b98e1af7f0        grafana/grafana     "/run.sh"                2 minutes ago       Up 2 minutes            0.0.0.0:3000->3000/tcp   grafana
+7c7905f2d1dd        influxdb            "/entrypoint.sh infl…"   10 minutes ago      Up 10 minutes           8086/tcp                 influxdb
+73442b5beeea        test-app:v1         "/usr/src/app/bootst…"   6 days ago          Exited (1) 6 days ago                            test-app
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ 
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ 
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ docker stop 7c7905f2d1dd
+7c7905f2d1dd
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ docker rm influxdb
+influxdb
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                  PORTS                    NAMES
+83b98e1af7f0        grafana/grafana     "/run.sh"                10 minutes ago      Up 10 minutes           0.0.0.0:3000->3000/tcp   grafana
+73442b5beeea        test-app:v1         "/usr/src/app/bootst…"   6 days ago          Exited (1) 6 days ago                            test-app
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ 
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ docker run --name influxdb -d -p 8086:8086 -v $PWD:/var/lib/influxdb influxdb
+de827fa8dcde0787cebe97b223e46265c660f0fc615663deb683a8c321037844
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                  PORTS                    NAMES
+de827fa8dcde        influxdb            "/entrypoint.sh infl…"   6 seconds ago       Up 5 seconds            0.0.0.0:8086->8086/tcp   influxdb
+83b98e1af7f0        grafana/grafana     "/run.sh"                11 minutes ago      Up 11 minutes           0.0.0.0:3000->3000/tcp   grafana
+73442b5beeea        test-app:v1         "/usr/src/app/bootst…"   6 days ago          Exited (1) 6 days ago                            test-app
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ ipconfig
+usage: ipconfig <command> <args>
+where <command> is one of waitall, getifaddr, ifcount, getoption, getpacket, getv6packet, set, setverbose
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ ipconfig getifaddr
+usage: ipconfig getifaddr <interface name>
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ ipconfig getifaddr localhost
+MacBook-Pro-de-Alexandro:TC3041-P4-Primavera-2019-equipo-11 alexmarcelo$ exit
+logout
+Saving session...
+...copying shared history...
+...saving history...truncating history files...
+...completed.
+Deleting expired sessions...1 completed.
+
+[Process completed]
+
